@@ -28,7 +28,6 @@
         	<div class="clear"></div>
             <div id="login">
         	<p >Welcome Jean-Louis ! <a href="">Disconnect</a></p>
-            <!-- <p id="btn_connect4qs"><img src="img/btn_4sq-connect.png" /></p>-->
     		</div>
         </div>
         <!--  FIN DU HEADER   --> 
@@ -52,47 +51,148 @@
         	<div class="clear"></div>
         	<div id="list_checkins" style="float:left">
                 <ul id="list_badges">
-                	<li class="box_badge" style="">
+                	<li class="box_badge" id="id_box_badge01">
                     	<div class="img_badge"><img src="img/example_badge.png" /></div>
-                        
                         <div class="infos_badges">
-                            <p class="titre_badge">
-                                Unlock Adventurer
-                            </p>
-                            
+                            <p class="titre_badge"><a href="#">Unlock Adventurer</a></p>
                             <div class="cat_badge"><img src="img/example_cat.png"/></div>
-                          
                             <p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
-                            <p class="findit_badge"><a href="">Find it now!</a> <span style="font-size:11px; color:#FF0000">Hurry up! 2 hours left.</span></p>
+                            <p class="findit_badge"><a href="">Find it now!</a> <span class="txt_hurry">Hurry up! 2 hours left.</span></p>
                         </div>
                         
-                        <div class="pourcent_badge" style="width:40px;">
-                        			
-                                    <script>
-									  $(document).ready(function() {
-										$("#progressbar").progressbar({ value: 37 });
-									  });
-									  </script>
-                                      
-                                      <div id="progressbar"></div>
+                        <div class="pourcent_badge">
+                                    <script>$(document).ready(function() {$("#progressbar01").progressbar({ value: 80 });});</script>
+                                    <div class="pastille"><p class="txt_pastille" style="">90%</p></div>
+                                    <div id="progressbar01"></div>    
                         </div>
-                    
-                    </li>
-                
+                     </li>
+                     
+                     <li class="box_badge" id="id_box_badge01">
+                    	<div class="img_badge"><img src="img/example_badge.png" /></div>
+                        <div class="infos_badges">
+                            <p class="titre_badge"><a href="#">Unlock Adventurer</a></p>
+                            <div class="cat_badge"><img src="img/example_cat.png"/></div>
+                            <p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
+                            <p class="findit_badge"><a href="">Find it now!</a></p>
+                        </div>
+                        
+                        <div class="pourcent_badge">
+                                    <script>$(document).ready(function() {$("#progressbar02").progressbar({ value: 30 });});</script>
+                                    <div class="pastille"><p class="txt_pastille" style="">30%</p></div>
+                                    <div id="progressbar02"></div>    
+                        </div>
+                     </li>
+                     
+                     <li class="box_badge" id="id_box_badge01">
+                    	<div class="img_badge"><img src="img/example_badge.png" /></div>
+                        <div class="infos_badges">
+                            <p class="titre_badge"><a href="#">Unlock Adventurer</a></p>
+                            <div class="cat_badge"><img src="img/example_cat.png"/></div>
+                            <p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
+                            <p class="findit_badge"><a href="">Find it now!</a></p>
+                        </div>
+                        
+                        <div class="pourcent_badge">
+                                    <script>$(document).ready(function() {$("#progressbar03").progressbar({ value: 70 });});</script>
+                                    <div class="pastille"><p class="txt_pastille" style="">70%</p></div>
+                                    <div id="progressbar03"></div>    
+                        </div>
+                     </li>
+                     
+                     <li class="box_badge" id="id_box_badge01">
+                    	<div class="img_badge"><img src="img/example_badge.png" /></div>
+                        <div class="infos_badges">
+                            <p class="titre_badge"><a href="#">Unlock Adventurer</a></p>
+                            <div class="cat_badge"><img src="img/example_cat.png"/></div>
+                            <p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
+                            <p class="findit_badge"><a href="">Find it now!</a></p>
+                        </div>
+                        
+                        <div class="pourcent_badge">
+                                    <script>$(document).ready(function() {$("#progressbar04").progressbar({ value: 10 });});</script>
+                                    <div class="pastille"><p class="txt_pastille" style="">10%</p></div>
+                                    <div id="progressbar04"></div>    
+                        </div>
+                     </li>
                 </ul>
             
+            
+            
+            	<div id="pagination">
+                	<div id="previous" style="float:left; font-weight:bold">Previous</div>
+                    <div id="next" style="float:right; font-weight:bold">Next</div>
+                
+                </div>
             </div>
             <div id="ggmap">
             
             </div>
         
-        
+      
+            <div class="clear"></div>
+            <br/>
+            <h2>Your stats</h2>
+        	
+            <div id="box_stats">
+            	<div>
+                	<div style="float:left; margin-right:50px;">
+                        <h3>Main stats</h3>
+                        <ul class="ulstats">
+                            <li id="icocheck" ><span style="vertical-align:top; font-weight:bold; color:#555555">79768</span><span style="vertical-align:top"> check-ins</span></li>
+                            <li id="icostar" ><span style="vertical-align:top; font-weight:bold;color:#555555">79768</span> <span style="vertical-align:top">check-ins</span></li>
+                            <li id="icocouronne" ><span style="vertical-align:top; font-weight:bold;color:#555555">79768</span> <span style="vertical-align:top">check-ins</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-right:50px; float:left">
+                        <h3>Last badges unlocked</h3>
+                        <ul class="ulstats">
+                            <li id="icosoul" ><span>Cruncked</span></li>
+                            <li id="icocoeur" ><span>Player Please !</span></li>
+                            <li id="icovoiture" ><span>Far Far Away</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-left:40px;">
+                        <h3>Ranking</h3>
+                        <ul class="ulstats">
+                            <li><span style="vertical-align:top; font-weight:bold; color:#555555">#299</span><span style="vertical-align:top"> on OneMoreCheckin</span></li>
+                            <li><span style="vertical-align:top; font-weight:bold; color:#555555">#299</span><span style="vertical-align:top"> on OneMoreCheckin</span></li>
+                            <li><span style="vertical-align:top; font-weight:bold; color:#555555">#299</span><span style="vertical-align:top"> on OneMoreCheckin</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div id="imgcheckbig"></div>
+                    
+                </div>
+                
+                
+            </div>
+        	
         </div>
         <!--  FIN CONTENT --> 
         
         
-        
     </div>
+    
+    <div id="bluebox">
+    </div>   
+
+    <div id="footer">
+        <div style="float:left">
+        <a href="http://www.spoke.fr" target="_blank"><img src="img/logo_spoke.png" /></a><br/>
+        <p style="margin:5px 0 0 0;">OneMoreCheckin.com is a service provided by SPOKE, a <a href="http://www.spoke.fr" class="lienblanc" target="_blank">Social Media agency</a> based in Paris.</p>
+        <p>Our team developed this version during the Foursquare Global Hackathon 2011.</p>
+        </div>
+        <div style="float:right; margin:25px 0 0 0;">
+         <a href="http://www.spoke.fr" id="btn_discover" target="_blank"></a>
+         <a href="http://www.spoke.fr/contact" id="btn_contact" target="_blank"></a>
+        </div>
+    
+    
+    </div>
+
 </div>
+
 </body>
 </html>

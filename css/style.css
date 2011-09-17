@@ -17,8 +17,8 @@ body {
 	}
 
 h1 {font-size: 20px; color:#006db7;}
-h2 {font-size: 16px; color:#555555;}
-h3 {font-size: 12px;}
+h2 {font-size: 17px; color:#555555;}
+h3 {font-size: 16px; font-weight:bold; color:#555555;}
 h4 {font-size: 10px;}
 
 
@@ -33,7 +33,9 @@ a{
 
 a:hover{color:#0a91ec}
 
-a.lienbleu:hover{text-decoration: none;color:#4ae0fd}
+
+a.lienblanc{color:#ffffff; text-decoration:none}
+
 
 .clear {
 clear:both;
@@ -139,7 +141,7 @@ background:url(../img/btn_near-roll.png) no-repeat;
 
 
 #ggmap {
-float:right;background:#333333; width:430px; height:460px;
+float:right;background:#333333; width:430px; height:466px;
 border:5px solid #00bae2;
 -webkit-border-radius: 4px;
 -moz-border-radius: 4px;
@@ -156,12 +158,13 @@ margin:10px 0 0 0;
 }
 
 .box_badge {
-width:390px; height:auto; background:#f9f9f9;
+width:380px; height:auto; background:#f9f9f9;
 border:1px solid #d9d9d9;
 -webkit-border-radius: 4px;
 -moz-border-radius: 4px;
 border-radius: 4px;
 padding:15px 3px 10px 10px;
+margin:0 0 12px 0;
 }
 
 .img_badge {
@@ -185,8 +188,163 @@ font-size:16px;
 margin:0 0 4px 0;
 }
 
+.titre_badge a{
+text-decoration:none;
+margin:0 0 4px 0;
+}
+
 .infos_badges {
 font-size:14px;
 width:300px;
 }
 
+.pastille {
+background:url(../img/pastille.png) no-repeat;
+width:42px;
+height:42px;
+color:#FFFFFF;
+margin:0 0 4px 0;
+}
+
+.findit_badge a{
+color:#555555;
+font-weight:bold;
+}
+
+.findit_badge a:hover{
+color:#0a91ec;
+font-weight:bold;
+}
+
+.txt_pastille {
+padding:12px 0 0 5px; font-weight:bold;}
+
+.txt_hurry {
+font-size:11px; color:#FF0000;
+}
+
+.pourcent_badge {
+width:42px; float:right;
+margin:-105px 0 0 0;
+}
+
+#box_stats {
+background:#f9f9f9;
+border:1px solid #d9d9d9;
+margin:10px 0 30px 0;
+padding:10px 10px 5px 10px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+font-size:15px;
+color:#a2a2a2;
+}
+
+#footer {
+width:850px;
+text-align:left;
+margin:-120px 0 0 0;
+color:#FFFFFF;
+font-weight:bold;
+font-size:12px;
+}
+
+
+
+#btn_discover{
+background:url(../img/btn_discover-off.png) no-repeat;
+float:left;
+width:125px;
+height:31px;
+}
+
+#btn_contact{
+background:url(../img/btn_contact-off.png) no-repeat;
+margin-left:5px;
+float:left;
+width:100px;
+height:31px
+}
+
+#btn_discover:hover{ 
+background:url(../img/btn_discover-roll.png) no-repeat;
+}
+
+#btn_contact:hover{ 
+background:url(../img/btn_contact-roll.png) no-repeat;
+}
+
+
+#bluebox{width:100%; background:#00bae2; height:135px;}
+
+#icocheck {
+list-style-image:url(../img/ico_check.png);
+list-style-position:inside;
+text-align:left;
+padding:-20px 0 0 0;
+height:21px;
+vertical-align:top;
+}
+
+#icostar {
+list-style-image:url(../img/ico_star.png);
+list-style-position:inside;
+text-align:left;
+padding:-20px 0 0 0;
+height:21px;
+vertical-align:top;
+}
+
+#icocouronne {
+list-style-image:url(../img/ico_couronne.png);
+list-style-position:inside;
+text-align:left;
+padding:-20px 0 0 0;
+height:21px;
+vertical-align:top;
+}
+
+#icosoul {
+list-style-image:url(../img/ico_soul.png);
+list-style-position:inside;
+text-align:left;
+padding:-20px 0 0 0;
+height:21px;
+vertical-align:top;
+}
+
+#icocoeur {
+list-style-image:url(../img/ico_coeur.png);
+list-style-position:inside;
+text-align:left;
+padding:-20px 0 0 0;
+height:21px;
+vertical-align:top;
+}
+
+#icovoiture {
+list-style-image:url(../img/ico_voiture.png);
+list-style-position:inside;
+text-align:left;
+padding:-20px 0 0 0;
+height:21px;
+vertical-align:top;
+}
+
+.ulstats li {
+vertical-align:top;
+margin-top:3px;
+list-style-type:none;
+}
+
+.ulstats li span {
+vertical-align:top;
+}
+
+
+#imgcheckbig {
+background:url(../img/checkbig.png) no-repeat;
+width:129px;
+height:122px;
+float:right; margin-top:-100px;
+}

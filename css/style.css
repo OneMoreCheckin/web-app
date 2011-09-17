@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* CSS One More Check
+Foursquare Hackaton / SPOKE */
+
+
+*{margin:0; padding:0;}
+
+/* BASICS */
+/* ------------------------------------------- */
+
+body {
+	background:#000000 url(../images/fond.jpg) no-repeat center top;
+	font-family:'Raleway',Helvetica Neue,Arial;
+	font-size: 12px;
+	}
+
+h1 {font-size: 26px; line-height: 42px;}
+h2 {font-size: 14px;}
+h3 {font-size: 12px; padding-bottom: 20px;}
+h4 {font-size: 10px;}
+
+
+img{ border: none; padding:0; }
+img a{border:none;}
+
+a{
+	color:#0ab9e5;
+	text-decoration:none;
+	outline: none;
+	}
+
+a:hover{text-decoration: underline;}
+
+a.lienbleu { 
+	color:#33d1f0;
+	padding:0 0 0 10px;
+	font-size:15px;
+	font-weidth:10;
+	letter-spacing:0.02em;
+	width:auto;
+	background:url(./images/petitefleche.png) no-repeat left center; 
+
+}
+
+a.lienbleu:hover{text-decoration: none;color:#4ae0fd}
+
+
+
+/* BLOCKS */
+/* ------------------------------------------- */
+
+
+#global { 
+
+}

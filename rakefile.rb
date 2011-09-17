@@ -15,7 +15,7 @@ require File.join(TOP_LEVEL_DIR, parent_path, 'common-tools', 'lib', 'deploy.rb'
 
 namespace :api do
 
-  @list = FileList.new("src/**/**", "")
+  @list = FileList.new("**/**", "")
   @deploy =  Deploy::path("")
   
   desc("Deploy winfail server")
@@ -24,8 +24,6 @@ namespace :api do
     print " ####=========> Deploying stuff ###"
     Deploy::remove_if_exist(@deploy)
     Deploy::recursive_copy(@list, @deploy)
-    sh "cp -R " + @deploy + "src/* "+ @deploy
-    sh "rm -rf " + @deploy + "src/"
 
   end
     

@@ -13,24 +13,21 @@
 
 <body>
 <script>
-function initialize() {
-  var myLatlng = new google.maps.LatLng(-34.397, 150.644);
-  var myOptions = {
-    zoom: 8,
-    center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+function mapsLoaded() {
+  var map = new google.maps.Map2(document.getElementById("map"));
+  map.setCenter(new google.maps.LatLng(37.4419, -122.1419), 13);
 }
-  
-function loadScript() {
+
+function loadMaps() {
+  google.load("maps", "2", {"callback" : mapsLoaded});
+}
+
+function initLoader() {
   var script = document.createElement("script");
+  script.src = "https://www.google.com/jsapi?key=ABQIAAAArsDERLZMyK5ESA6sl6W4DRTqSxmiBf-2QH2STyx-ecgWAlnc-RQpesYvx7hmAbmTSyaUzzwxgjnKew&callback=loadMaps";
   script.type = "text/javascript";
-  script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
-  document.body.appendChild(script);
+  document.getElementsByTagName("head")[0].appendChild(script);
 }
-  
-window.onload = loadScript;
 </script>
 
 
@@ -148,7 +145,7 @@ window.onload = loadScript;
                 </div>
             </div>
             <div id="ggmap">
-            	<div id="map_canvas"></div>
+            	<div id="map"></div>
             </div>
         
       

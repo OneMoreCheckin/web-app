@@ -2,18 +2,97 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<link href="css/style.css" rel="stylesheet" type="text/css" /> 
+<link href="css/jquery.css" rel="stylesheet" type="text/css" /> 
+<link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
+  <script src="js/jquerymin.js"></script>
+  <script src="js/jquery-uimin.js"></script>
 <title>One more Check-in</title>
+
 </head>
 
 <body>
-
-<div id="global">
-	<div>
+<div align="center">
+    <div id="graybox">   
     </div>
-
-
-
+    
+    
+    <div id="global">
+    
+    	<!--  DEBUT DU HEADER   --> 
+    	<div id="header">
+       		<div id="logo">
+            </div>
+            
+            <div id="h_sentence"><h1>What you will get with one more check-in ?</h1></div>
+        	<div class="clear"></div>
+            <div id="login">
+        	<p >Welcome Jean-Louis ! <a href="">Disconnect</a></p>
+            <!-- <p id="btn_connect4qs"><img src="img/btn_4sq-connect.png" /></p>-->
+    		</div>
+        </div>
+        <!--  FIN DU HEADER   --> 
+        
+        
+        <!--  DEBUT CONTENT --> 
+        <div id="content">
+        
+            <h2>Discover the next badges you can unlock !</h2>
+            
+            <div style="float:left">
+            <p style="float:left; margin:6px 6px 0 0;"><b>Display :</b></p>
+            <a href="#" id="btn_easy" class="btn active"></a>
+            <a href="#" id="btn_near" class="btn"></a>
+            </div>
+            
+            <div style="float:right; margin:15px 0 0 0;">
+            <p>Your last check-in : <b>SPOKE, Paris - 11/09/16 - 2pm34</b></p>
+            </div>
+        	
+        	<div class="clear"></div>
+        	<div id="list_checkins" style="float:left">
+                <ul id="list_badges">
+                	<li class="box_badge" style="">
+                    	<div class="img_badge"><img src="img/example_badge.png" /></div>
+                        
+                        <div class="infos_badges">
+                            <p class="titre_badge">
+                                Unlock Adventurer
+                            </p>
+                            
+                            <div class="cat_badge"><img src="img/example_cat.png"/></div>
+                          
+                            <p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
+                            <p class="findit_badge"><a href="">Find it now!</a> <span style="font-size:11px; color:#FF0000">Hurry up! 2 hours left.</span></p>
+                        </div>
+                        
+                        <div class="pourcent_badge" style="width:40px;">
+                        			
+                                    <script>
+									  $(document).ready(function() {
+										$("#progressbar").progressbar({ value: 37 });
+									  });
+									  </script>
+                                      
+                                      <div id="progressbar"></div>
+                        </div>
+                    
+                    </li>
+                
+                </ul>
+            
+            </div>
+            <div id="ggmap">
+            
+            </div>
+        
+        
+        </div>
+        <!--  FIN CONTENT --> 
+        
+        
+        
+    </div>
 </div>
 </body>
 </html>

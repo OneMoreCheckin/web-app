@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url(http://fonts.googleapis.com/css?family=Nunito:400,700);
 /* CSS One More Check
 Foursquare Hackaton / SPOKE */
 
@@ -9,14 +10,15 @@ Foursquare Hackaton / SPOKE */
 /* ------------------------------------------- */
 
 body {
-	background:#000000 url(../images/fond.jpg) no-repeat center top;
-	font-family:'Raleway',Helvetica Neue,Arial;
-	font-size: 12px;
+	background:#FFFFFF url(../images/fond.jpg) no-repeat center top;
+	font-family:'Nunito',Helvetica,Arial;
+	font-size: 14px;
+	color:#555555;
 	}
 
-h1 {font-size: 26px; line-height: 42px;}
-h2 {font-size: 14px;}
-h3 {font-size: 12px; padding-bottom: 20px;}
+h1 {font-size: 20px; color:#006db7;}
+h2 {font-size: 16px; color:#555555;}
+h3 {font-size: 12px;}
 h4 {font-size: 10px;}
 
 
@@ -24,32 +26,167 @@ img{ border: none; padding:0; }
 img a{border:none;}
 
 a{
-	color:#0ab9e5;
-	text-decoration:none;
+	color:#006db7;
+	text-decoration:underline;
 	outline: none;
 	}
 
-a:hover{text-decoration: underline;}
-
-a.lienbleu { 
-	color:#33d1f0;
-	padding:0 0 0 10px;
-	font-size:15px;
-	font-weidth:10;
-	letter-spacing:0.02em;
-	width:auto;
-	background:url(./images/petitefleche.png) no-repeat left center; 
-
-}
+a:hover{color:#0a91ec}
 
 a.lienbleu:hover{text-decoration: none;color:#4ae0fd}
+
+.clear {
+clear:both;
+}
 
 
 
 /* BLOCKS */
 /* ------------------------------------------- */
 
-
-#global { 
-
+#graybox {
+background:#eeeeee url(../img/bandeheader.png) repeat-x center top;
+width:100%;
+height:35px;
 }
+
+#logo {
+background:url(../img/logo.png) repeat-x center top;
+width:208px;
+height:82px;
+float:left;
+}
+
+#global {
+width:850px;
+text-align:left;
+margin:-24px 0 0 0;
+}
+
+#header {
+margin:-10px 0 20px 0;
+}
+
+#login {
+background:#f9f9f9;
+border:1px solid #d9d9d9;
+margin:-20px 0 0 0;
+padding:5px 5px 5px 5px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+color:#006db7;
+font-size:14px;
+text-align:right;
+height:20px;
+}
+
+
+
+#h_sentence {
+font-weight:bold;
+float:right;
+margin:30px 0 0 0;
+}
+
+#btn_connect4qs {
+margin:-1px 0 0 0;
+}
+
+#box_stats {
+background:#f9f9f9;
+margin:-20px 0 0 0;
+border:1px solid #d9d9d9;
+padding:20px 10px 10px 10px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.btn {
+width:107px;
+height:33px;
+float:left;
+}
+
+#btn_easy{
+background:url(../img/btn_easy-off.png) no-repeat;
+}
+
+#btn_easy.active {
+background:url(../img/btn_easy-on.png) no-repeat;
+}
+
+#btn_easy.active:hover {
+background:url(../img/btn_easy-on.png) no-repeat;
+}
+
+#btn_easy:hover {
+background:url(../img/btn_easy-roll.png) no-repeat;
+}
+
+
+#btn_near {
+background:url(../img/btn_near-off.png) no-repeat;
+}
+
+
+#btn_near:hover {
+background:url(../img/btn_near-roll.png) no-repeat;
+}
+
+
+
+
+#ggmap {
+float:right;background:#333333; width:430px; height:460px;
+border:5px solid #00bae2;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+margin:10px 0 0 0;
+}
+
+#list_badges {
+list-style:none;
+}
+
+#list_checkins {
+margin:10px 0 0 0;
+}
+
+.box_badge {
+width:390px; height:auto; background:#f9f9f9;
+border:1px solid #d9d9d9;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+padding:15px 3px 10px 10px;
+}
+
+.img_badge {
+float:left;
+width:57px;
+height:57px;
+margin:0 5px 0 0;
+}
+
+.cat_badge {
+float:left;
+width:32px;
+height:50px;
+margin:0 5px 0 0;
+}
+
+.titre_badge {
+color:#006db7;
+font-weight:bold;
+font-size:16px;
+margin:0 0 4px 0;
+}
+
+.infos_badges {
+font-size:14px;
+width:300px;
+}
+

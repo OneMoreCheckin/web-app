@@ -27,8 +27,9 @@ function gup( name )
     return results[1];
 }
 
+var code  = gup('code');
 
-Services.authenticate(gup(code), function () {
+Services.authenticate(code, function () {
   alert("authentifié");
 }, function () {
   console.log('bad auth');

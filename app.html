@@ -37,10 +37,11 @@ Services.authenticate(code, function () {
   
   BadgeList.reset();
   console.log(Services.easiest)
-  for value in Services.easiest.slice(0, 5) {
+  max = 
+  for (var i = 0; i < (Services.easiest.length < 5) ? Services.easiest.length : 5; i++) {
       console.log(value)
       BadgeList.add(value);
-  });
+  };
   
 }, function () {
   document.location = "/";

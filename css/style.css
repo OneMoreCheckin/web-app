@@ -135,6 +135,10 @@ background:url(../img/btn_near-off.png) no-repeat;
 background:url(../img/btn_near-roll.png) no-repeat;
 }
 
+#btn_easy.active {
+background:url(../img/btn_near-on.png) no-repeat;
+}
+
 #btn_near.active:hover {
 background:url(../img/btn_near-on.png) no-repeat;
 }

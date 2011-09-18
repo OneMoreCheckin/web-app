@@ -169,6 +169,7 @@ border-radius: 4px;
 padding:15px 3px 10px 10px;
 margin:0 0 12px 0;
 height:100px;
+position:relative;
 }
 
 .img_badge {
@@ -228,8 +229,10 @@ font-size:11px; color:#FF0000;
 }
 
 .pourcent_badge {
-width:42px; float:right;
-margin:-105px 0 0 0;
+  position: absolute;
+    right: 10px;
+    top: -5px;
+    width: 42px;
 }
 
 #box_stats {

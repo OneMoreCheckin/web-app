@@ -24,7 +24,7 @@
 
 <script>
 
-
+$(document).ready(function () {
 function gup( name )
 {
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
@@ -33,24 +33,27 @@ function gup( name )
   var results = regex.exec( window.location.href );
   if( results == null )
     return "";
-  else
-    return results[1];
-}
+    else
+      return results[1];
+  }
 
-var code  = gup('code');
-$('.loader').show();
-Services.authenticate(code, function () {
-  $('.loader').hide();
-  
-  Infos.grab();
-  
-  BadgeList.reset();
-  BadgeList.setBackend(Services.easiest);
-  BadgeList.render();  
-  
-}, function () {
-  document.location = "/";
+  var code  = gup('code');
+  $('.loader').show();
+  Services.authenticate(code, function () {
+    $('.loader').hide();
+    
+    Infos.grab();
+    
+    BadgeList.reset();
+    BadgeList.setBackend(Services.easiest);
+    BadgeList.render();  
+    
+  }, function () {
+    document.location = "/";
+  });
+
 });
+
 function initialiser_map() {
 
 				var latlng = new google.maps.LatLng(-33.890542, 151.274856);

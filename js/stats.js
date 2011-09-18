@@ -82,9 +82,9 @@ BadgeList = new (function () {
    }
    
    this.render = function (type) {
-     if (type == "next") {
+     if (type == "prev") {
        start += limit;
-     } else if (type == "prev") {
+     } else if (type == "next") {
        start = start - limit;
      }
      

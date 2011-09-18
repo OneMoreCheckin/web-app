@@ -72,33 +72,6 @@ function initialiser_map() {
 }
 				
 
-$.getJSON('https://api.foursquare.com/v2/venues/search?ll=40.7,-74&oauth_token=BHJFRKMPHVLNGBZLHHCNIDRPXBK1ET5AIG2XLNT3FUVUCZSF&v=20110918', function(data) {
-      var items = [];
-      prenom_user = (data.response.user.firstName);
-      nom_user = (data.response.user.lastName);
-      count_checkin = (data.response.user.checkins.count);
-      countbadges_checkin = (data.response.user.badges.count);
-      mayor_checkin = (data.response.user.mayorships.count);
-      
-      $.each(data.response.user.checkins.items, function(i,item){
-      	  var date = new Date();
-    	  date.setTime(item.createdAt*1000);
-          last_checkin = (item.venue.name)+', '+(item.venue.location.city)+' - '+date.getFullYear()+'/'+(date.getMonth()+1)+'/'+date.getDate();
-        });
-    	
-      $('<span>'+prenom_user+' '+nom_user+'</span>').appendTo('#prenom_nom');
-      $('<span>'+last_checkin+'</span>').appendTo('#last_check');
-      $('<span>'+count_checkin+'</span>').appendTo('#count_check');
-      $('<span>'+countbadges_checkin+'</span>').appendTo('#countbadges_check');
-      $('<span>'+mayor_checkin+'</span>').appendTo('#mayor_check');
-    });
-
-		
-		
-		
-		
-		
-		
 				
 var checkins = [
 				  ['Bondi Beach', -33.890542, 151.274856, 4,"VOILA"],

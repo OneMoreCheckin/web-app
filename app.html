@@ -45,10 +45,8 @@ Services.authenticate(code, function () {
   Infos.grab();
   
   BadgeList.reset();
-  alert(Services.easiest.length);
-  for (var i = 0; i < (Services.easiest.length < 5) ? Services.easiest.length : 5; i++) {
-      BadgeList.add(Services.easiest[i]);
-  }
+  BadgeList.setBackend(Services.easiest);
+  BadgeList.render();  
   
 }, function () {
   document.location = "/";

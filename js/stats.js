@@ -69,6 +69,7 @@ var callbackFunc = function (a,b){
 
 
 BadgeList = new (function () {
+   var cnt = 0;
    
    this.reset = function(){
      $("#list_badges").empty();
@@ -77,12 +78,13 @@ BadgeList = new (function () {
    this.add = function (obj) {
      if (!obj)
       return;
-           
+          
+      cnt ++;
      imgPath = "https://playfoursquare.s3.amazonaws.com/badge/57"+obj.img;
      
      if (!obj.icon)
       obj.icon = "/img/all_cat.png";
       
-     $("#list_badges").append('<li class="box_badge" id="id_box_badge01"> <div class="img_badge"><img src="'+imgPath+'" /></div> <div class="infos_badges"> <p class="titre_badge"><a href="#">'+obj.name+'</a></p> <div class="cat_badge"><img src="'+obj.icon+'"/></div> <p class="description_badge">Do '+obj.more+' more check-in. '+obj.details+' </p> <p class="findit_badge"><a href="">Find it now!</a> <span class="txt_hurry"></span></p> </div><div class="pourcent_badge"><script>$(document).ready(function() {$("#progressbar01").progressbar({ value: '+(obj.complete == 0 ? 5 : obj.complete)+' });});</script> <div class="pastille"><p class="txt_pastille" style="">'+obj.complete+'%</p></div> <div id="progressbar01"></div></div></li>');
+     $("#list_badges").append('<li class="box_badge" id="id_box_badge01"> <div class="img_badge"><img src="'+imgPath+'" /></div> <div class="infos_badges"> <p class="titre_badge"><a href="#">'+obj.name+'</a></p> <div class="cat_badge"><img src="'+obj.icon+'"/></div> <p class="description_badge">Do '+obj.more+' more check-in. '+obj.details+' </p> <p class="findit_badge"><a href="">Find it now!</a> <span class="txt_hurry"></span></p> </div><div class="pourcent_badge"><script>$(document).ready(function() {$("#progressbar'+cnt+'").progressbar({ value: '+(obj.complete == 0 ? 5 : obj.complete)+' });});</script> <div class="pastille"><p class="txt_pastille" style="">'+obj.complete+'%</p></div> <div id="progressbar'+cnt+'"></div></div></li>');
    }
 });

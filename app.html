@@ -33,6 +33,13 @@ Services.authenticate(code, function () {
   alert("authentifié");
   
   Infos.grab();
+  
+  BadgeList.reset();
+  
+  $(Services.easiest).slice(0, 5).forEarch(function (value){
+      BadgeList.add(value);
+  });
+  
 }, function () {
   document.location = "/";
 });
@@ -191,21 +198,7 @@ function setMarkers(map, locations, urlcat) {
         	<div class="clear"></div>
         	<div id="list_checkins" style="float:left">
                 <ul id="list_badges">
-                	<li class="box_badge" id="id_box_badge01">
-                    	<div class="img_badge"><img src="img/example_badge.png" /></div>
-                        <div class="infos_badges">
-                            <p class="titre_badge"><a href="#">Unlock Adventurer</a></p>
-                            <div class="cat_badge"><img src="img/example_cat.png"/></div>
-                            <p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
-                            <p class="findit_badge"><a href="">Find it now!</a> <span class="txt_hurry">Hurry up! 2 hours left.</span></p>
-                        </div>
-                        
-                        <div class="pourcent_badge">
-                                    <script>$(document).ready(function() {$("#progressbar01").progressbar({ value: 80 });});</script>
-                                    <div class="pastille"><p class="txt_pastille" style="">90%</p></div>
-                                    <div id="progressbar01"></div>    
-                        </div>
-                     </li>
+                	
                      
                      <li class="box_badge" id="id_box_badge01">
                     	<div class="img_badge"><img src="img/example_badge.png" /></div>

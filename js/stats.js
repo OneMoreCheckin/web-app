@@ -83,7 +83,7 @@ BadgeList = new (function () {
    
    this.init = function () {
       start = 0;
-      limit = 5;  
+      limit = 5;
    }
    
    this.render = function (type) {
@@ -92,7 +92,7 @@ BadgeList = new (function () {
      } else if (type == "next") {
        start = start - limit;
      }
-     
+     cnt = 0;
      for (var i = start; i < (start+limit); i++)
         this.add(__backend[i]);
         

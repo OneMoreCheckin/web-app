@@ -1,6 +1,6 @@
 Services = new (function(){
     
-    var host = "http://localhost:8080";
+    var host = "http://api.onemorecheckin.com";
     var __token = null;
     var __uid = null;
     var __oauth = null;

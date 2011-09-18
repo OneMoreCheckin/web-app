@@ -80,7 +80,7 @@ BadgeList = new (function () {
      __backend = backend;
    }
    
-   this.render = function (type = null) {
+   this.render = function (type) {
      if (type == "next") {
        start += limit;
      } else if (type == "prev") {

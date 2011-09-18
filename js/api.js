@@ -49,7 +49,7 @@ Services = new (function(){
             else {
               Services.token = data.token;
               Services.uid = data.uid;
-              Servvices.oauth = data.oauth;
+              Services.oauth = data.oauth;
               Services.fetchBadges('more', function (d) { Services.easiest = d }, error);
               Services.fetchBadges('complete', function (d) { Services.nearest = d }, error);
               success(data);

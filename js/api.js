@@ -68,10 +68,3 @@ Services = new (function(){
     }
 
 });
-
-
-Services.authenticate('T4VECIEO4UYDQHO2CN0NG1NMQUNDJ115CRC21RAZEFLKJJ1L', function () {
-  alert("authentifié");
-}, function () {
-  console.log('bad auth');
-});

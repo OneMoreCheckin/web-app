@@ -37,7 +37,7 @@ Services.authenticate(code, function () {
   
   BadgeList.reset();
   
-  $(Services.easiest).slice(0, 5).forEarch(function (value){
+  $(Services.easiest).slice(0, 5).each(function (value){
       BadgeList.add(value);
   });
   

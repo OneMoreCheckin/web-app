@@ -36,9 +36,8 @@ Services.authenticate(code, function () {
   Infos.grab();
   
   BadgeList.reset();
-  console.log(Services.easiest)
+  alert(Services.easiest.length);
   for (var i = 0; i < (Services.easiest.length < 5) ? Services.easiest.length : 5; i++) {
-      console.log(Services.easiest[i])
       BadgeList.add(Services.easiest[i]);
   }
   

@@ -1,8 +1,9 @@
 Services = new (function(){
     
     var host = "http://localhost:8080";
-    var __token = null
-    var __uid = null
+    var __token = null;
+    var __uid = null;
+    var __oauth = null;
     
     this.easiest = [];
     this.nearest = [];
@@ -27,6 +28,16 @@ Services = new (function(){
       enumerable: true
     });
     
+    Object.defineProperty(this, "oauth", {
+      get: function(){
+        return __oauth;
+      },
+      set: function(oauth){
+        __oauth = oauth
+      },
+      enumerable: true
+    });
+    
     this.authenticate = function (code, success, error) {
       $.ajax({
           url: host + "/1.0/register?code="+code,
@@ -38,6 +49,7 @@ Services = new (function(){
             else {
               Services.token = data.token;
               Services.uid = data.uid;
+              Servvices.oauth = data.oauth;
               Services.fetchBadges('more', function (d) { Services.easiest = d }, error);
               Services.fetchBadges('complete', function (d) { Services.nearest = d }, error);
               success(data);

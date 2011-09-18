@@ -51,6 +51,18 @@ function gup( name )
   }, function () {
     document.location = "/";
   });
+  
+  
+  
+  $('#pagination #previous').click(function (){
+     BadgeList.reset();
+     BadgeList.render('next');
+  });
+     
+  $('#pagination #next').click(function () {
+       BadgeList.reset();
+       BadgeList.render('prev');
+  });
 
 });
 

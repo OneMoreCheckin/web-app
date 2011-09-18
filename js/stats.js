@@ -1,5 +1,5 @@
 // STATS
-  $.getJSON('https://api.foursquare.com/v2/users/408125?oauth_token=BHJFRKMPHVLNGBZLHHCNIDRPXBK1ET5AIG2XLNT3FUVUCZSF&v=20110918', function(data) {
+  $.getJSON('https://api.foursquare.com/v2/users/'+Services.uid.+'?oauth_token='+ Services.token+'&v=20110918', function(data) {
   var items = [];
   prenom_user = (data.response.user.firstName);
   nom_user = (data.response.user.lastName);
@@ -22,7 +22,7 @@
   
  
 
-  $.getJSON('https://api.foursquare.com/v2/users/408125/badges?oauth_token=BHJFRKMPHVLNGBZLHHCNIDRPXBK1ET5AIG2XLNT3FUVUCZSF&v=20110918', function(data2) {
+  $.getJSON('https://api.foursquare.com/v2/users/'+Services.uid.+'/badges?oauth_token='+Services.token+'&v=20110918', function(data2) {
   var itemsz = [];
 
   var lesbadges = new Array();	

@@ -8,6 +8,8 @@ Services = new (function(){
     this.easiest = [];
     this.nearest = [];
     
+    this.ready = false;
+    
     Object.defineProperty(this, "uid", {
       get: function(){
         return __uid;
@@ -50,9 +52,9 @@ Services = new (function(){
               Services.token = data.token;
               Services.uid = data.uid;
               Services.oauth = data.oauth;
-              Services.fetchBadges('more', function (d) { Services.easiest = d }, error);
-              Services.fetchBadges('complete', function (d) { Services.nearest = d }, error);
-              success(data);
+              Services.fetchBadges('more', function (d) { Services.easiest = d; if (Services.ready == true) success(); else Services.ready = true; }, error);
+              Services.fetchBadges('complete', function (d) { Services.nearest = d; if (Services.ready == true) success(); else Services.ready = true;  }, error);
+              
             }
           },
           error : function (error) {

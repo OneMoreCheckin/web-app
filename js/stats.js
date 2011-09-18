@@ -80,7 +80,12 @@ BadgeList = new (function () {
      __backend = backend;
    }
    
-   this.render = function () {
+   this.render = function (type = null) {
+     if (type == "next") {
+       start += limit;
+     } else if (type == "prev") {
+       start = start - limit;
+     }
      
      for (var i = start; i < (start+limit); i++)
         this.add(Services.easiest[i]);
@@ -105,10 +110,10 @@ BadgeList = new (function () {
    }
    
    $('#previous').click(function (){
-     
+     BadgeList.render('next');
    });
    
    $('#next').click(function () {
-     
+     BadgeList.render('prev');
    });
 });

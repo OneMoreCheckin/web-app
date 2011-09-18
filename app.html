@@ -28,11 +28,11 @@ function gup( name )
 }
 
 var code  = gup('code');
-
+alert("loading ...");
 Services.authenticate(code, function () {
   alert("authentifié");
 }, function () {
-  console.log('bad auth');
+  document.location = "/";
 });
 function initialiser_map() {
 

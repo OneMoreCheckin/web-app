@@ -45,7 +45,7 @@ function gup( name )
     Infos.grab();
     
     BadgeList.reset();
-    BadgeList.setBackend(Services.easiest);
+    BadgeList.setBackend(Services.nearest);
     BadgeList.render();  
     
   }, function () {
@@ -231,8 +231,8 @@ function setMarkers(map, locations, urlcat) {
             
             <div style="float:left">
             <p style="float:left; margin:6px 6px 0 0;"><b>Display :</b></p>
-            <a href="#" id="btn_easy" class="btn active"></a>
-            <a href="#" id="btn_near" class="btn"></a>
+            <a href="#" id="btn_near" class="btn active"></a>
+            <a href="#" id="btn_easy" class="btn"></a>
             </div>
             
             <div style="float:right; margin:15px 0 0 0;">

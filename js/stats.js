@@ -35,7 +35,7 @@ Infos = new (function() {
    	 	
     		badges=data2.response.badges[key];
     	
-  	    if (badges.unlocks.lenght!=0 && badges.unlocks.length!=0) {
+  	    if (badges.unlocks.lenght!=0 && badges.unlocks.length!=0 && badges.unlocks[0].checkins.length != 0) {
   		lesbadges[i]={date:badges.unlocks[0].checkins[0].createdAt, name:badges.name, image:badges.image.name};
   		i++;
   	  }

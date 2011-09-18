@@ -3,14 +3,12 @@
 /* CSS One More Check
 Foursquare Hackaton / SPOKE */
 
-
 *{margin:0; padding:0;}
 
 /* BASICS */
 /* ------------------------------------------- */
-
 body {
-	background:#FFFFFF url(../images/fond.jpg) no-repeat center top;
+	background:#FFFFFF;
 	font-family:'Nunito',Helvetica,Arial;
 	font-size: 14px;
 	color:#555555;

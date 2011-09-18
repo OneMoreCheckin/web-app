@@ -10,7 +10,7 @@ Foursquare Hackaton / SPOKE */
 /* ------------------------------------------- */
 
 body {
-	background:#FFFFFF url(../images/fond.jpg) no-repeat center top;
+	background:#FFFFFF;
 	font-family:'Nunito',Helvetica,Arial;
 	font-size: 14px;
 	color:#555555;
@@ -95,7 +95,6 @@ background:url(../img/btn_discover-roll.png) no-repeat;
 #btn_contact:hover{ 
 background:url(../img/btn_contact-roll.png) no-repeat;
 }
-
 
 #bluebox{width:100%; background:#00bae2; height:235px;}
 

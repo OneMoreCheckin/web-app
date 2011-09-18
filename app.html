@@ -14,7 +14,16 @@
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <title>One more Check-in</title>
 
+ <script>
+  		popinperso = function(){
+		$('.loader').show();
+		}
+  </script>
+
+
+
 <script>
+
 
 function gup( name )
 {
@@ -29,9 +38,9 @@ function gup( name )
 }
 
 var code  = gup('code');
-alert("loading ...");
+$('.loader').show();
 Services.authenticate(code, function () {
-  alert("authentifié");
+  $('.loader').hide();
   
   Infos.grab();
   
@@ -159,6 +168,7 @@ function setMarkers(map, locations, urlcat) {
 
 
 <body onload="initialiser_map()">
+<div class="loader" style="position:absolute; left:0%; width:100%; height:100%;background-color: rgba(255, 255, 255, 0.6); z-index:1000" align="center"><img style="margin-top:200px;" src="img/loading.gif" /></div>
 
 <div align="center">
     <div id="graybox">   

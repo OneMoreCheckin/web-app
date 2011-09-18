@@ -37,7 +37,7 @@ Services.authenticate(code, function () {
   
   BadgeList.reset();
   console.log(Services.easiest)
-  Services.easiest.slice(0, 5).each(function (value){
+  for value in Services.easiest.slice(0, 5) {
       console.log(value)
       BadgeList.add(value);
   });

@@ -94,7 +94,7 @@ BadgeList = new (function () {
      }
      
      for (var i = start; i < (start+limit); i++)
-        this.add(Services.easiest[i]);
+        this.add(__backend[i]);
         
    }
    

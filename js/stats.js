@@ -74,7 +74,18 @@ BadgeList = new (function () {
    var start = 0;
    var limit = 5;
    
+   var __backend = [];
    
+   this.setBackend = function (backend) {
+     __backend = backend;
+   }
+   
+   this.render = function () {
+     
+     for (var i = start; i < (start+limit); i++)
+        this.add(Services.easiest[i]);
+        
+   }
    
    this.reset = function(){
      $("#list_badges").empty();

@@ -45,7 +45,8 @@ Services.authenticate(code, function () {
   Infos.grab();
   
   BadgeList.reset();
-  for (var i = 0; i < 5; i++) {
+  alert(Services.easiest.length);
+  for (var i = 0; i < (Services.easiest.length < 5) ? Services.easiest.length : 5; i++) {
       BadgeList.add(Services.easiest[i]);
   }
   
@@ -69,7 +70,35 @@ function initialiser_map() {
 				setMarkers(carte, checkins, "img/example_cat.png");
 }
 				
-				
+alert(last_checkin_lat);				
+
+$.getJSON('https://api.foursquare.com/v2/venues/search?ll=40.7,-74&oauth_token=BHJFRKMPHVLNGBZLHHCNIDRPXBK1ET5AIG2XLNT3FUVUCZSF&v=20110918', function(data) {
+      var items = [];
+      prenom_user = (data.response.user.firstName);
+      nom_user = (data.response.user.lastName);
+      count_checkin = (data.response.user.checkins.count);
+      countbadges_checkin = (data.response.user.badges.count);
+      mayor_checkin = (data.response.user.mayorships.count);
+      
+      $.each(data.response.user.checkins.items, function(i,item){
+      	  var date = new Date();
+    	  date.setTime(item.createdAt*1000);
+          last_checkin = (item.venue.name)+', '+(item.venue.location.city)+' - '+date.getFullYear()+'/'+(date.getMonth()+1)+'/'+date.getDate();
+        });
+    	
+      $('<span>'+prenom_user+' '+nom_user+'</span>').appendTo('#prenom_nom');
+      $('<span>'+last_checkin+'</span>').appendTo('#last_check');
+      $('<span>'+count_checkin+'</span>').appendTo('#count_check');
+      $('<span>'+countbadges_checkin+'</span>').appendTo('#countbadges_check');
+      $('<span>'+mayor_checkin+'</span>').appendTo('#mayor_check');
+    });
+
+		
+		
+		
+		
+		
+		
 				
 var checkins = [
 				  ['Bondi Beach', -33.890542, 151.274856, 4,"VOILA"],
@@ -78,6 +107,8 @@ var checkins = [
 				  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2,"ahaha"],
 				  ['Maroubra Beach', -33.950198, 151.259302, 1,"voilouqdqsdsqqsd"]
 				];
+				
+	
 
 function setMarkers(map, locations, urlcat) {
   // Add markers to the map

@@ -78,7 +78,7 @@ BadgeList = new (function () {
      if (!obj)
       return;
            
-     imgPath = "https://playfoursquare.s3.amazonaws.com/badge/57/"+obj.img;
+     imgPath = "https://playfoursquare.s3.amazonaws.com/badge/57"+obj.img;
      
      if (!obj.icon)
       obj.icon = "/img/all_cat.png";

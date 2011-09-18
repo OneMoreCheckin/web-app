@@ -71,8 +71,6 @@ function initialiser_map() {
 				setMarkers(carte, checkins, "img/example_cat.png");
 }
 				
-alert(last_checkin_lat);
-alert(last_checkin_lng);				
 
 $.getJSON('https://api.foursquare.com/v2/venues/search?ll=40.7,-74&oauth_token=BHJFRKMPHVLNGBZLHHCNIDRPXBK1ET5AIG2XLNT3FUVUCZSF&v=20110918', function(data) {
       var items = [];

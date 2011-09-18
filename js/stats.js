@@ -71,7 +71,7 @@ var callbackFunc = function (a,b){
 BadgeList = new (function () {
    
    this.reset = function(){
-     $("#list_badges").clean();
+     $("#list_badges").clear();
    }
    
    this.add = function (obj) {

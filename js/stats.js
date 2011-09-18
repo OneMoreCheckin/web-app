@@ -81,6 +81,11 @@ BadgeList = new (function () {
      __backend = backend;
    }
    
+   this.init = function () {
+      start = 0;
+      limit = 5;  
+   }
+   
    this.render = function (type) {
      if (type == "prev") {
        start += limit;

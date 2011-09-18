@@ -67,11 +67,19 @@ function gup( name )
   $('#btn_near').click(function(){
       $('#btn_near').addClass('active');
       $('#btn_easy').removeClass('active');
+      BadgeList.reset();
+      BadgeList.init();
+      BadgeList.setBackend(Services.nearest);
+      BadgeList.render();
   });
   
   $('#btn_easy').click(function(){
       $('#btn_easy').addClass('active');
       $('#btn_near').removeClass('active');
+      BadgeList.reset();
+      BadgeList.init();
+      BadgeList.setBackend(Services.easiest);
+      BadgeList.render();
   });
 
 });

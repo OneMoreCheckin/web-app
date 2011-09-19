@@ -1,6 +1,6 @@
 Services = new (function(){
     
-    var host = "http://api.onemorecheckin.com";
+    var host = Omc.config.api.host + ':' + Omc.config.api.port;
     var __token = null;
     var __uid = null;
     var __oauth = null;

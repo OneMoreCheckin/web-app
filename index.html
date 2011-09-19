@@ -6,10 +6,13 @@
 <link href="css/accueil.css" rel="stylesheet" type="text/css" /> 
 <link href="css/jquery.css" rel="stylesheet" type="text/css" /> 
 <link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
+ <script src="js/config.js"></script>
   <script src="js/jquerymin.js"></script>
   <script src="js/jquery-uimin.js"></script>
   <script>
-  $(document).ready(function(){  
+   
+  $(document).ready(function(){
+   $('.btn_4qs > a').get(0).href = "https://foursquare.com/oauth2/authenticate?client_id="+Omc.config.client+"&response_type=code&redirect_uri="+Omc.config.callback+"/app.html"
    $('.btn_4qs a').hover(function(){  
    $(this).stop().animate({'opacity' : '0'}, 500);  
    }, function(){$(this).stop().animate({'opacity' : '1'}, 500);});  

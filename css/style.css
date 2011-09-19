@@ -250,7 +250,7 @@ color:#a2a2a2;
 #footer {
 width:850px;
 text-align:left;
-margin:-120px 0 0 0;
+margin:-180px 0 20px 0;
 color:#FFFFFF;
 font-weight:bold;
 font-size:12px;
@@ -282,7 +282,7 @@ background:url(../img/btn_contact-roll.png) no-repeat;
 }
 
 
-#bluebox{width:100%; background:#00bae2; height:135px;}
+#bluebox{width:100%; background:#00bae2; height:200px;}
 
 #icocheck {
 list-style-image:url(../img/ico_check.png);

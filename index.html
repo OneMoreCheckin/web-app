@@ -1,25 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="icon" type="image/png" href="/img/favicon.png" />
-<link href="css/accueil.css" rel="stylesheet" type="text/css" /> 
-<link href="css/jquery.css" rel="stylesheet" type="text/css" /> 
-<link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
- <script src="js/config.js"></script>
-  <script src="js/jquerymin.js"></script>
-  <script src="js/jquery-uimin.js"></script>
-  <script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>One more Check-in - Let us show you where to unlock your next badge !</title>
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link href="css/accueil.css" rel="stylesheet" type="text/css" /> 
+    <link href="css/jquery.css" rel="stylesheet" type="text/css" /> 
+    <link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
+    <script src="js/config.js"></script>
+    <script src="js/jquerymin.js"></script>
+    <script src="js/jquery-uimin.js"></script>
+    <script type="text/javascript">
    
-  $(document).ready(function(){
-   $('.btn_4qs > a').get(0).href = "https://foursquare.com/oauth2/authenticate?client_id="+Omc.config.client+"&response_type=code&redirect_uri="+Omc.config.callback+"/app.html"
-   $('.btn_4qs a').hover(function(){  
-   $(this).stop().animate({'opacity' : '0'}, 500);  
-   }, function(){$(this).stop().animate({'opacity' : '1'}, 500);});  
-});  
+    $(document).ready(function(){
+     $('.btn_4qs > a').get(0).href = "https://foursquare.com/oauth2/authenticate?client_id="+Omc.config.client+"&response_type=code&redirect_uri="+Omc.config.callback+"/app.html"
+     $('.btn_4qs a').hover(function(){  
+     $(this).stop().animate({'opacity' : '0'}, 500);  
+     }, function(){$(this).stop().animate({'opacity' : '1'}, 500);});  
+    });  
   </script>
-
-<title>One more Check-in</title>
 
 </head>
 

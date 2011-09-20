@@ -14,18 +14,14 @@
 	<title>One more Check-in - Let us show you where to unlock your next badge !</title>
 
 	<link rel="icon" type="image/png" href="img/favicon.png" />
-	<link rel="stylesheet" type="text/css" href="css/omci.css" /> 
-	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="style/omci.css" /> 
 
 	<script type="text/javascript" src="lib/com/omci/config.js"></script>
 	<script type="text/javascript" src="lib/com/jquery/jquery-1.6.4.min.js"></script>
 	<script type="text/javascript" src="lib/com/jquery/plugins.js"></script>
-
-<!-- XXX todo: get rid of that crap -->
-	<script type="text/javascript" src="lib/com/jquery/jquery-uimin.js"></script>
-
 	<script type="text/javascript" src="lib/com/omci/api.js"></script>
-	<script type="text/javascript" src="lib/com/omci/stats.js"></script>
+	<script type="text/javascript" src="lib/com/omci/widgets.js"></script>
+	<script type="text/javascript" src="lib/com/omci/map.js"></script>
 
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
@@ -43,163 +39,36 @@
 <script type="text/javascript">
 
 
-Omc.Utils = new (function(){
-	this.getCurrentParams = function(){
-		var q, p = window.location.search.substr(1).split("&");
-		var s = {};
-		for(var x = 0; x < p.length; x++){
-			q = p[x].split("=");
-			s[q.shift()] = q.join("=");
-		}
-		return s;
-	};
-})();
-
-
 $(document).ready(function () {
+	if("code" in Omc.Utils.getCurrentParams()){
+		$.cookie("token", Omc.Utils.getCurrentParams()["code"]);
+		document.location = "http://" + document.location.host + document.location.pathname;
+		return;
+	}
+
 	Omc.App.setup();
 
 	var ccode = $.cookie("token");
-	var uricode;
-	if("code" in Omc.Utils.getCurrentParams())
-		uricode = Omc.Utils.getCurrentParams()["code"];
 
-	if(!ccode && !uricode){
+	if(!ccode){
 		Omc.App.prompt();
 		return;
 	}
 
-	var code = ccode ? ccode : uricode;
-
 	Omc.Widgets.loader.boot();
 
-	Omc.Services.authenticate(code, function () {
-		// Success, go for it, store
-		$.cookie("token", code);
-		// If on a uri, redirect to avoid people sharing tokens and/or leaking
-		if(uricode){
-			document.location = "http://" + document.location.host + document.location.pathname;
-			return;
-		}
-
-		// Else, boot
+	Omc.Services.authenticate(ccode, function () {
+		// Boot
 		Omc.App.boot();
-
 	}, function () {
-
 		// Failure, by all means... clear the cookie
 		$.cookie("token", null);
-		// Redirect if need be
-		if(uricode){
-			document.location = "http://" + document.location.host + document.location.pathname;
-			return;
-		}
-		// Otherwise, prompt for logon
+		// Prompt again for logon
 		Omc.App.prompt();
 		Omc.Widgets.loader.destroy();
 	});
 });
 
-function initialiser_map() {
-
-				var latlng = new google.maps.LatLng(48.868822,2.341332);
-				//objet contenant des propriétés avec des identificateurs prédéfinis dans Google Maps permettant
-				//de définir des options d'affichage de notre carte
-				var options = {
-					center: latlng,
-					zoom: 19,
-					mapTypeId: google.maps.MapTypeId.ROADMAP,
-					streetViewControl: false
-				};
-				//constructeur de la carte qui prend en paramêtre le conteneur HTML
-				//dans lequel la carte doit s'afficher et les options
-				var carte = new google.maps.Map(document.getElementById("carte"), options);
-				setMarkers(carte, checkins, "img/example_cat.png");
-}
-				
-
-				
-var checkins = [
-					['Palais Brongniart', 48.868822,2.341332, 4,"Palais Brongniart"]
-				];
-				
-	
-
-function setMarkers(map, locations, urlcat) {
-	// Add markers to the map
-	// Marker sizes are expressed as a Size of X,Y
-	// where the origin of the image (0,0) is located
-	// in the top left of the image.
-	// Origins, anchor positions and coordinates of the marker
-	// increase in the X direction to the right and in
-	// the Y direction down.
-			var cat = new google.maps.MarkerImage(urlcat,
-			// This marker is 20 pixels wide by 32 pixels tall.
-			new google.maps.Size(32, 32),
-			// The origin for this image is 0,0.
-			new google.maps.Point(0,0),
-			// The anchor for this image is the base of the flagpole at 0,32.
-			new google.maps.Point(0, 32));
-			var fond = new google.maps.MarkerImage("img/check_map.png",
-			// The shadow image is larger in the horizontal dimension
-			// while the position and offset are the same as for the main image.
-			new google.maps.Size(69, 80),
-			new google.maps.Point(0,0),
-			new google.maps.Point(18, 50));
-			// Shapes define the clickable region of the icon.
-			// The type defines an HTML <area> element 'poly' which
-			// traces out a polygon as a series of X,Y points. The final
-			// coordinate closes the poly by connecting to the first
-			// coordinate.
-		var shape = {
-			coord: [1, 1, 1, 60, 40, 30, 40 , 1],
-			type: 'poly'
-		};
-	
-		var listmarker = Array();
-		for (var i = 0; i < locations.length; i++) {
-			var checkin = locations[i];
-			var myLatLng = new google.maps.LatLng(checkin[1], checkin[2]);
-			var marker = new google.maps.Marker({
-				markercount:i,
-				position: myLatLng,
-				map: map,
-				shadow: fond,
-				icon: cat,
-				shape: shape,
-				title: checkin[0],
-				zIndex: checkin[3],
-				description:checkin[4]
-		});
-	
-		var contentString = '<div id="content">'+
-				'<div id="siteNotice">'+
-				'</div>'+
-				'<h1 id="firstHeading" class="firstHeading">'+marker.title+'</h1>'+
-				'<div id="bodyContent">'+
-				'<p><b>'+marker.description+'</b>' +
-				'</div>'+
-				'</div>';
-				
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString
-		});
-	
-		listmarker[i]={id:i,markertag:marker};
-		google.maps.event.addListener(listmarker[i]["markertag"], 'click', function() {
-		alert("Ouais j'ai cliqué sur le marqueur !."+listmarker[1]["markertag"].position);//message d'alerte
-		
-		
-		var size = (listmarker.length < 10) ? listmarker.length : 10;
-			for(var y=0; y < size; y++) {
-			infowindow.open(map,listmarker[y]["markertag"]);
-		}
-
-			});
-		 
-	}
-							
-}
 </script>
 
 
@@ -229,8 +98,9 @@ function setMarkers(map, locations, urlcat) {
 
 	<div id="header" class="chuipasla">
 		<div>
-			<p>Welcome <span id="user-infos-gender" style="display: none;"></span> <span id="user-infos-name"></span> <a href="/XXXIMPLEMENTME">Disconnect</a></p>
 			<h1>What will you get with one more check-in ?</h1>
+			<p>Welcome <span id="user-infos-gender" style="display: none;"></span> <span id="user-infos-name"></span> <a id="user-disconnect" href="#">Disconnect</a></p>
+			<div></div>
 		</div>
 	</div>
 
@@ -258,7 +128,6 @@ function setMarkers(map, locations, urlcat) {
 						</div>
 						
 						<div class="pourcent_badge">
-												<script>$(document).ready(function() {$("#progressbar02").progressbar({ value: 30 });});</script>
 												<div class="pastille"><p class="txt_pastille" style="">30%</p></div>
 												<div id="progressbar02"></div>    
 						</div>
@@ -274,7 +143,6 @@ function setMarkers(map, locations, urlcat) {
 						</div>
 						
 						<div class="pourcent_badge">
-												<script>$(document).ready(function() {$("#progressbar03").progressbar({ value: 70 });});</script>
 												<div class="pastille"><p class="txt_pastille" style="">70%</p></div>
 												<div id="progressbar03"></div>    
 						</div>
@@ -290,7 +158,6 @@ function setMarkers(map, locations, urlcat) {
 						</div>
 						
 						<div class="pourcent_badge">
-												<script>$(document).ready(function() {$("#progressbar04").progressbar({ value: 10 });});</script>
 												<div class="pastille"><p class="txt_pastille" style="">10%</p></div>
 												<div id="progressbar04"></div>    
 						</div>

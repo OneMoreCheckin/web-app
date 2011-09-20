@@ -1,106 +1,152 @@
 @charset "utf-8";
-@import url(http://fonts.googleapis.com/css?family=Nunito:400,700);
-/* CSS One More Check
-Foursquare Hackaton / SPOKE */
-
-*{margin:0; padding:0;}
-
-/* BASICS */
-/* ------------------------------------------- */
-body {
-	background:#FFFFFF;
-	font-family:'Nunito',Helvetica,Arial;
-	font-size: 14px;
-	color:#555555;
-	}
-
-h1 {font-size: 20px; color:#006db7;}
-h2 {font-size: 17px; color:#555555;}
-h3 {font-size: 16px; font-weight:bold; color:#555555;}
-h4 {font-size: 10px;}
-
-
-img{ border: none; padding:0; }
-img a{border:none;}
-
-a{
-	color:#006db7;
-	text-decoration:underline;
-	outline: none;
-	}
-
-a:hover{color:#0a91ec}
-
-
-a.lienblanc{color:#ffffff; text-decoration:none}
-
-
-.clear {
-clear:both;
-}
-
-
-
 /* BLOCKS */
 /* ------------------------------------------- */
 
-#graybox {
-background:#eeeeee url(../img/bandeheader.png) repeat-x center top;
-width:100%;
-height:35px;
+/**
+ * Prompt thing
+ */
+
+#prompt-content {
+	background:#eeeeee url(../img/bandeheader.png) repeat-x center top;
 }
 
-#logo {
-background:url(../img/logo.png) repeat-x center top;
-width:208px;
-height:82px;
-float:left;
+#prompt-content > div{
+	width: 850px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom: 500px;
+	height:20px;
+	padding-top: 15px;
 }
 
-#global {
-width:850px;
-text-align:left;
-margin:-18px 0 0 0;
+#prompt-content > div > div:first-child{
+	padding-top: 100px;
 }
 
-#header {
-margin:-10px 0 20px 0;
-}
+/**
+ * The bottom stats info thingie
+ */
 
-#login {
-background:#f9f9f9;
-border:1px solid #d9d9d9;
-margin:-20px 0 0 0;
-padding:5px 5px 5px 5px;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
-color:#006db7;
-font-size:14px;
-text-align:right;
-height:20px;
+#box_stats {
+	background: #f9f9f9;
+	margin: 0 0 20px 0;
+	border: 1px solid #d9d9d9;
+	padding: 20px 10px 10px 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	height: 120px;
+	text-align: center;
 }
 
 
+/**
+ * The three main sections inside, floating stacked on left
+ */
 
-#h_sentence {
-font-weight:bold;
-float:right;
-margin:30px 0 0 0;
+#box_stats div{
+	float: left;
+	width: 200px;
 }
+
+#box_stats div:last-child {
+	background: url(../img/checkbig.png) no-repeat;
+	width: 129px;
+	height: 122px;
+	float: right;
+}
+
+/**
+ * Detailed trixing inside
+ */
+
+#box_stats li {
+	margin-top: 3px;
+	list-style-type: none;
+	list-style-position: inside;
+	text-align: left;
+	padding: -20px 0 0 0;
+	height: 21px;
+}
+
+#box_stats li span{
+	vertical-align: top;
+}
+
+#box_stats li span > span{
+	font-weight: bold;
+	color: #555555;
+}
+
+#box_stats li#icocheck {
+	list-style-image:url(../img/ico_check.png);
+}
+
+#box_stats li#icostar {
+	list-style-image:url(../img/ico_star.png);
+}
+
+#box_stats li#icocouronne {
+	list-style-image:url(../img/ico_couronne.png);
+}
+
+/**
+ * Previous/next trixing
+ */
+
+
+#previous{
+	float:left;
+	display: none;
+}
+
+#next{
+	float:right;
+	display: none;
+}
+
+#previous.active, #next.active{
+	font-weight:bold;
+	cursor: pointer;
+	display: block;
+}
+
+
+/**
+ * Raped from the jquery stylesheet
+ */
+.ui-progressbar {
+	height:11px; text-align: left;
+	border: 1px solid #D9D9D9;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    text-align: left;
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+}
+
+.ui-progressbar .ui-progressbar-value {
+    height: 100%;
+    margin: -1px;
+    background: none repeat scroll 0 0 #E1ECBB;
+    border: 1px solid #D9D9D9;
+    color: #222222;
+    font-weight: bold;
+    color: #222222;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+
+
+.chuipasla{
+	display: none;
+}
+
 
 #btn_connect4qs {
 margin:-1px 0 0 0;
-}
-
-#box_stats {
-background:#f9f9f9;
-margin:-20px 0 0 0;
-border:1px solid #d9d9d9;
-padding:20px 10px 10px 10px;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
 }
 
 .btn {
@@ -136,11 +182,11 @@ background:url(../img/btn_near-roll.png) no-repeat;
 }
 
 #btn_near.active {
-background:url(../img/btn_near-on.png) no-repeat;
+	background:url(../img/btn_near-on.png) no-repeat;
 }
 
 #btn_near.active:hover {
-background:url(../img/btn_near-on.png) no-repeat;
+	background:url(../img/btn_near-on.png) no-repeat;
 }
 
 #ggmap {
@@ -170,6 +216,14 @@ padding:15px 3px 10px 10px;
 margin:0 0 12px 0;
 height:100px;
 position:relative;
+
+}
+
+/* Trixing */
+.description_badge
+{
+	height: 72px;
+	overflow: hidden;
 }
 
 .img_badge {
@@ -247,69 +301,135 @@ font-size:15px;
 color:#a2a2a2;
 }
 
+
+/**
+ * Header section
+ */
+
+#header {
+	background:#eeeeee url(../img/bandeheader.png) repeat-x center top;
+}
+
+#header > div{
+	width: 850px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom: 100px;
+	height:20px;
+	padding-top: 15px;
+}
+
+/* Main title */
+#header > div h1 {
+	padding-top: 20px;
+	font-weight:bold;
+	text-align: right;
+	background: url(../img/logo.png) no-repeat left top;
+	height: 62px;
+	position: relative;
+	top: -30px;
+}
+
+/* Login p */
+#header > div p {
+	background:#f9f9f9;
+	border:1px solid #d9d9d9;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	color:#006db7;
+	font-size:14px;
+	text-align:right;
+	height:20px;
+
+	position: relative;
+	top: 60px;
+	padding:5px 5px 5px 5px;
+}
+
+
+/**
+ * Main content
+ */
+
+#content {
+	margin:-24px 0 0 0;
+	width:850px;
+	text-align:left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/**
+ * Footer section
+ */
+
 #footer {
-width:850px;
-text-align:left;
-margin:-180px 0 20px 0;
-color:#FFFFFF;
-font-weight:bold;
-font-size:12px;
+	margin-top: 20px;
+	clear: both;
+
+	min-width: 790px;
+	height:180px;
+	width: 100%;
+
+	padding-top: 20px;
+	color:#FFFFFF;
+	font-weight: bold;
+	font-size: 12px;
+	background: #00bae2;
+}
+
+#footer > div{
+	width: 850px;
+	text-align:left;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#footer #btn_discover{
+	background:url(../img/btn_discover-off.png) no-repeat;
+	float:left;
+	width:125px;
+	height:31px;
+}
+
+#footer #btn_contact{
+	background:url(../img/btn_contact-off.png) no-repeat;
+	margin-left:5px;
+	float:left;
+	width:100px;
+	height:31px
+}
+
+#footer #btn_discover:hover{ 
+	background:url(../img/btn_discover-roll.png) no-repeat;
+}
+
+#footer #btn_contact:hover{ 
+	background:url(../img/btn_contact-roll.png) no-repeat;
+}
+
+#footer > div div:first-child{
+	float:left;
+}
+
+#footer > div div:last-child{
+	float:right;
 }
 
 
 
-#btn_discover{
-background:url(../img/btn_discover-off.png) no-repeat;
-float:left;
-width:125px;
-height:31px;
-}
-
-#btn_contact{
-background:url(../img/btn_contact-off.png) no-repeat;
-margin-left:5px;
-float:left;
-width:100px;
-height:31px
-}
-
-#btn_discover:hover{ 
-background:url(../img/btn_discover-roll.png) no-repeat;
-}
-
-#btn_contact:hover{ 
-background:url(../img/btn_contact-roll.png) no-repeat;
-}
 
 
-#bluebox{width:100%; background:#00bae2; height:200px;}
 
-#icocheck {
-list-style-image:url(../img/ico_check.png);
-list-style-position:inside;
-text-align:left;
-padding:-20px 0 0 0;
-height:21px;
-vertical-align:top;
-}
 
-#icostar {
-list-style-image:url(../img/ico_star.png);
-list-style-position:inside;
-text-align:left;
-padding:-20px 0 0 0;
-height:21px;
-vertical-align:top;
-}
 
-#icocouronne {
-list-style-image:url(../img/ico_couronne.png);
-list-style-position:inside;
-text-align:left;
-padding:-20px 0 0 0;
-height:21px;
-vertical-align:top;
-}
+
+
+
+
+
+
 
 #icosoul {
 list-style-image:url(../img/ico_soul.png);
@@ -338,20 +458,5 @@ height:21px;
 vertical-align:top;
 }
 
-.ulstats li {
-vertical-align:top;
-margin-top:3px;
-list-style-type:none;
-}
-
-.ulstats li span {
-vertical-align:top;
-}
 
 
-#imgcheckbig {
-background:url(../img/checkbig.png) no-repeat;
-width:129px;
-height:122px;
-float:right; margin-top:-100px;
-}

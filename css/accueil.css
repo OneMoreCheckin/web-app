@@ -1,59 +1,12 @@
 @charset "utf-8";
-@import url(http://fonts.googleapis.com/css?family=Nunito:400,700);
-/* CSS One More Check
-Foursquare Hackaton / SPOKE */
-
-
-*{margin:0; padding:0;}
-
-/* BASICS */
-/* ------------------------------------------- */
-
-body {
-	background:#FFFFFF;
-	font-family:'Nunito',Helvetica,Arial;
-	font-size: 14px;
-	color:#555555;
-	}
-
-h1 {font-size: 30px; color:#006db7;}
-h2 {font-size: 22px; color:#006db7;}
-h3 {font-size: 16px; font-weight:bold; color:#555555;}
-h4 {font-size: 10px;}
-
-
-img{ border: none; padding:0; }
-img a{border:none;}
-
-a{
-	color:#006db7;
-	text-decoration:underline;
-	outline: none;
-	}
-
-a:hover{color:#0a91ec}
-
-
-a.lienblanc{color:#ffffff; text-decoration:none}
-
-
-.clear {
-clear:both;
-}
-
-
-
 /* BLOCKS */
 /* ------------------------------------------- */
 
-#graybox {
-background:#eeeeee url(../img/bandeheader.png) repeat-x center top;
-width:100%;
-height:35px;
-}
-
 #logo {
 margin-top:110px;
+
+
+
 }
 
 #global {

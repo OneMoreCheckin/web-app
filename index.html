@@ -1,91 +1,362 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>One more Check-in - Let us show you where to unlock your next badge !</title>
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
-    <link href="css/accueil.css" rel="stylesheet" type="text/css" /> 
-    <link href="css/jquery.css" rel="stylesheet" type="text/css" /> 
-    <link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
-    <script src="js/config.js"></script>
-    <script src="js/jquerymin.js"></script>
-    <script src="js/jquery-uimin.js"></script>
-    <script type="text/javascript">
-   
-    $(document).ready(function(){
-     $('.btn_4qs > a').get(0).href = "https://foursquare.com/oauth2/authenticate?client_id="+Omc.config.client+"&response_type=code&redirect_uri="+Omc.config.callback+"/app.html"
-     $('.btn_4qs a').hover(function(){  
-     $(this).stop().animate({'opacity' : '0'}, 500);  
-     }, function(){$(this).stop().animate({'opacity' : '1'}, 500);});  
-    });  
-  </script>
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>One more Check-in - Let us show you where to unlock your next badge !</title>
+
+	<link rel="icon" type="image/png" href="img/favicon.png" />
+	<link rel="stylesheet" type="text/css" href="css/omci.css" /> 
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+
+	<script type="text/javascript" src="lib/com/omci/config.js"></script>
+	<script type="text/javascript" src="lib/com/jquery/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="lib/com/jquery/plugins.js"></script>
+
+<!-- XXX todo: get rid of that crap -->
+	<script type="text/javascript" src="lib/com/jquery/jquery-uimin.js"></script>
+
+	<script type="text/javascript" src="lib/com/omci/api.js"></script>
+	<script type="text/javascript" src="lib/com/omci/stats.js"></script>
+
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+
+
+<!--
+	<script type="text/javascript">
+			popinperso = function(){
+				$('.loader').show();
+			}
+	</script>
+
+-->
+
+<script type="text/javascript">
+
+
+Omc.Utils = new (function(){
+	this.getCurrentParams = function(){
+		var q, p = window.location.search.substr(1).split("&");
+		var s = {};
+		for(var x = 0; x < p.length; x++){
+			q = p[x].split("=");
+			s[q.shift()] = q.join("=");
+		}
+		return s;
+	};
+})();
+
+
+$(document).ready(function () {
+	Omc.App.setup();
+
+	var ccode = $.cookie("token");
+	var uricode;
+	if("code" in Omc.Utils.getCurrentParams())
+		uricode = Omc.Utils.getCurrentParams()["code"];
+
+	if(!ccode && !uricode){
+		Omc.App.prompt();
+		return;
+	}
+
+	var code = ccode ? ccode : uricode;
+
+	Omc.Widgets.loader.boot();
+
+	Omc.Services.authenticate(code, function () {
+		// Success, go for it, store
+		$.cookie("token", code);
+		// If on a uri, redirect to avoid people sharing tokens and/or leaking
+		if(uricode){
+			document.location = "http://" + document.location.host + document.location.pathname;
+			return;
+		}
+
+		// Else, boot
+		Omc.App.boot();
+
+	}, function () {
+
+		// Failure, by all means... clear the cookie
+		$.cookie("token", null);
+		// Redirect if need be
+		if(uricode){
+			document.location = "http://" + document.location.host + document.location.pathname;
+			return;
+		}
+		// Otherwise, prompt for logon
+		Omc.App.prompt();
+		Omc.Widgets.loader.destroy();
+	});
+});
+
+function initialiser_map() {
+
+				var latlng = new google.maps.LatLng(48.868822,2.341332);
+				//objet contenant des propriétés avec des identificateurs prédéfinis dans Google Maps permettant
+				//de définir des options d'affichage de notre carte
+				var options = {
+					center: latlng,
+					zoom: 19,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+					streetViewControl: false
+				};
+				//constructeur de la carte qui prend en paramêtre le conteneur HTML
+				//dans lequel la carte doit s'afficher et les options
+				var carte = new google.maps.Map(document.getElementById("carte"), options);
+				setMarkers(carte, checkins, "img/example_cat.png");
+}
+				
+
+				
+var checkins = [
+					['Palais Brongniart', 48.868822,2.341332, 4,"Palais Brongniart"]
+				];
+				
+	
+
+function setMarkers(map, locations, urlcat) {
+	// Add markers to the map
+	// Marker sizes are expressed as a Size of X,Y
+	// where the origin of the image (0,0) is located
+	// in the top left of the image.
+	// Origins, anchor positions and coordinates of the marker
+	// increase in the X direction to the right and in
+	// the Y direction down.
+			var cat = new google.maps.MarkerImage(urlcat,
+			// This marker is 20 pixels wide by 32 pixels tall.
+			new google.maps.Size(32, 32),
+			// The origin for this image is 0,0.
+			new google.maps.Point(0,0),
+			// The anchor for this image is the base of the flagpole at 0,32.
+			new google.maps.Point(0, 32));
+			var fond = new google.maps.MarkerImage("img/check_map.png",
+			// The shadow image is larger in the horizontal dimension
+			// while the position and offset are the same as for the main image.
+			new google.maps.Size(69, 80),
+			new google.maps.Point(0,0),
+			new google.maps.Point(18, 50));
+			// Shapes define the clickable region of the icon.
+			// The type defines an HTML <area> element 'poly' which
+			// traces out a polygon as a series of X,Y points. The final
+			// coordinate closes the poly by connecting to the first
+			// coordinate.
+		var shape = {
+			coord: [1, 1, 1, 60, 40, 30, 40 , 1],
+			type: 'poly'
+		};
+	
+		var listmarker = Array();
+		for (var i = 0; i < locations.length; i++) {
+			var checkin = locations[i];
+			var myLatLng = new google.maps.LatLng(checkin[1], checkin[2]);
+			var marker = new google.maps.Marker({
+				markercount:i,
+				position: myLatLng,
+				map: map,
+				shadow: fond,
+				icon: cat,
+				shape: shape,
+				title: checkin[0],
+				zIndex: checkin[3],
+				description:checkin[4]
+		});
+	
+		var contentString = '<div id="content">'+
+				'<div id="siteNotice">'+
+				'</div>'+
+				'<h1 id="firstHeading" class="firstHeading">'+marker.title+'</h1>'+
+				'<div id="bodyContent">'+
+				'<p><b>'+marker.description+'</b>' +
+				'</div>'+
+				'</div>';
+				
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+		});
+	
+		listmarker[i]={id:i,markertag:marker};
+		google.maps.event.addListener(listmarker[i]["markertag"], 'click', function() {
+		alert("Ouais j'ai cliqué sur le marqueur !."+listmarker[1]["markertag"].position);//message d'alerte
+		
+		
+		var size = (listmarker.length < 10) ? listmarker.length : 10;
+			for(var y=0; y < size; y++) {
+			infowindow.open(map,listmarker[y]["markertag"]);
+		}
+
+			});
+		 
+	}
+							
+}
+</script>
+
 
 </head>
 
+<!--
+<body onload="initialiser_map()">
+-->
 <body>
+	<div id="loader-widget" class="top-widget"></div>
+	<div id="error-widget" class="top-widget">Errrrrrrrr, something went wrong. Please try reloading :)</div>
 
-<div align="center">
-    <div id="graybox">   
-    </div>    
-    
-    <div id="global">
+	<div id="prompt-content" class="chuipasla">
+		<div>
+			<div><img src="img/big_logo.png" /></div>
+			<div style="margin-top:10px;">
+				<h1>What will you get with one more check-in ?</h1>
+				<h2>Let us show you where to unlock your next badge !</h2>
+			</div>
+			<div class="btn_4qs">
+				<a href="#"></a>
+			</div>
+		</div>
+	</div>
 
-        <!--  DEBUT CONTENT --> 
-        <div id="content">
-            <div id="logo"><img src="img/big_logo.png" /></div>
-                <div style="margin-top:10px;">
-                <h1>What will you get with one more check-in ?</h1>
-                <h2>Let us show you where to unlock your next badge !</h2>
-                </div>
-                
-                
-                <div class="btn_4qs"><a href="https://foursquare.com/oauth2/authenticate?client_id=KPA3DXY55S1OWUAXKDNTXUCE0AL4AI0EMPKO2BSIVU2IUSAH&response_type=code&redirect_uri=http://www.onemorecheckin.com/app.html"></a></div>
-            
-        	
-        </div>
-        <!--  FIN CONTENT --> 
-        
-        
-    </div>
-    
-    <div id="bluebox">
-    </div>   
 
-    <div id="footer">
-        <div style="float:left">
-        <a href="http://www.spoke.fr" target="_blank"><img src="img/logo_spoke.png" /></a><br/>
-        <p style="margin:5px 0 0 0;">OneMoreCheckin.com is a service provided by SPOKE, a <a href="http://www.spoke.fr" class="lienblanc" target="_blank">Social Media agency</a> based in Paris.</p>
-        <p>Our team developed this version during the Foursquare Global Hackathon 2011.</p>
-        <br />
-        <p>Made with caffeine by :  <a href="http://twitter.com/#!/raildecom" style="color:white" title="@Raildecom">Emmanuel Tabard</a>, <a href="http://twitter.com/#!/jeromeduchamps" style="color:white" title="@jeromeduchamps"> Jérôme Duchamps</a>, <a href="http://twitter.com/#!/erwanonline" style="color:white" title="@erwanonline">Erwan Guiriec</a> ,  <a href="http://twitter.com/#!/simonduhil" style="color:white" title="@simonduhil">Simon Duhil</a></p>
 
-        <br />
-        
-        <iframe src="//www.facebook.com/plugins/like.php?app_id=158532517566572&amp;href=http%3A%2F%2Fwww.facebook.com%2Fspokeagency&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:35px;" allowTransparency="true"></iframe>
-        
-        </div>
-        <div style="float:right; margin:25px 0 0 0;">
-         <a href="http://www.spoke.fr" id="btn_discover" target="_blank"></a>
-         <a href="http://www.spoke.fr/contact" id="btn_contact" target="_blank"></a>
-        </div>
-    
-    
-    </div>
+	<div id="header" class="chuipasla">
+		<div>
+			<p>Welcome <span id="user-infos-gender" style="display: none;"></span> <span id="user-infos-name"></span> <a href="/XXXIMPLEMENTME">Disconnect</a></p>
+			<h1>What will you get with one more check-in ?</h1>
+		</div>
+	</div>
 
-</div>
-<script type="text/javascript">
+	<div id="content" class="chuipasla">
+		<h2>Discover the next badges you can unlock !</h2>
+		<div style="float:left">
+			<p style="float:left; margin:6px 6px 0 0;"><b>Display :</b></p>
+			<a href="#" id="btn_near" class="btn active"></a>
+			<a href="#" id="btn_easy" class="btn"></a>
+		</div>
+		<div style="float:right; margin:15px 0 0 0;">
+			<p>Your last check-in : <b><span id="user-infos-lastcheck"></span></b></p>
+		</div>
+				
+		<div class="clear"></div>
+		<div id="list_checkins" style="float:left">
+			<ul id="list_badges">
+				<li class="box_badge" id="id_box_badge01">
+					<div class="img_badge"><img src="img/example_badge.png" /></div>
+						<div class="infos_badges">
+								<p class="titre_badge"><a href="#">Unlock Adventurer</a></p>
+								<div class="cat_badge"><img src="img/example_cat.png"/></div>
+								<p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
+								<p class="findit_badge"><a href="" onclick="javascript:infowindow.open(map,marker);">Find it now!</a></p>
+						</div>
+						
+						<div class="pourcent_badge">
+												<script>$(document).ready(function() {$("#progressbar02").progressbar({ value: 30 });});</script>
+												<div class="pastille"><p class="txt_pastille" style="">30%</p></div>
+												<div id="progressbar02"></div>    
+						</div>
+				</li>
+									 
+				<li class="box_badge" id="id_box_badge01">
+					<div class="img_badge"><img src="img/example_badge.png" /></div>
+						<div class="infos_badges">
+								<p class="titre_badge"><a href="#">Unlock Adventurer</a></p>
+								<div class="cat_badge"><img src="img/example_cat.png"/></div>
+								<p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
+								<p class="findit_badge"><a href="">Find it now!</a></p>
+						</div>
+						
+						<div class="pourcent_badge">
+												<script>$(document).ready(function() {$("#progressbar03").progressbar({ value: 70 });});</script>
+												<div class="pastille"><p class="txt_pastille" style="">70%</p></div>
+												<div id="progressbar03"></div>    
+						</div>
+				</li>
+				 
+				<li class="box_badge" id="id_box_badge01">
+					<div class="img_badge"><img src="img/example_badge.png" /></div>
+						<div class="infos_badges">
+								<p class="titre_badge"><a href="#">Unlock Adventurer</a></p>
+								<div class="cat_badge"><img src="img/example_cat.png"/></div>
+								<p class="description_badge">Do 1 check-in in a bar venue with 3 others (opposite sex) </p>
+								<p class="findit_badge"><a href="">Find it now!</a></p>
+						</div>
+						
+						<div class="pourcent_badge">
+												<script>$(document).ready(function() {$("#progressbar04").progressbar({ value: 10 });});</script>
+												<div class="pastille"><p class="txt_pastille" style="">10%</p></div>
+												<div id="progressbar04"></div>    
+						</div>
+				</li>
+			</ul>
+					
+						<div id="pagination">
+							<div id="previous">Previous</div>
+							<div id="next">Next</div>
+						</div>
+					</div>
+				
+					<div id="ggmap">
+						<div id="carte" style="width:100%; height:100%"></div>
+					</div>
+			
+		<h2>Your stats</h2>
+	
+		<div id="box_stats">
+			<div>
+				<ul>
+					<li><img id="user-infos-avatar" /></li>
+				</ul>
+			</div>
+			<div>
+				<h3>Main stats</h3>
+				<ul>
+					<li id="icocheck"><span><span id="user-infos-countcheck"></span> check-ins</span></li>
+					<li id="icostar"><span><span id="user-infos-countbadges"></span> badges unlocked</span></li>
+					<li id="icocouronne"><span><span id="user-infos-mayor"></span> mayorships</span></li>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-25787547-1']);
-  _gaq.push(['_trackPageview']);
+					<li style="display: none"><span><span id="user-infos-currentscore"></span> points</span></li>
+					<li style="display: none"><span><span id="user-infos-bestscore"></span> best score</span></li>
+					<li style="display: none"><span><span id="user-infos-counttips"></span> tips</span></li>
+					<li style="display: none"><span><span id="user-infos-todo"></span> todos</span></li>
+					<li style="display: none"><span><span id="user-infos-friends"></span> friends</span></li>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+				</ul>
+			</div>
+					
+			<div>
+				<h3>Last badges unlocked</h3>
+				<ul id="user-infos-badges"></ul>
+			</div>
 
-</script>
+			<div></div>
+		</div>
+	</div>
 
+	<div id="footer" class="chuipasla">
+		<div>
+			<div>
+				<a href="http://www.spoke.fr" target="_blank"><img alt="spoke" src="img/logo_spoke.png" /></a><br/>
+				<p style="margin:5px 0 0 0;">OneMoreCheckin.com is a service provided by SPOKE, a <a href="http://www.spoke.fr" class="lienblanc" target="_blank">Social Media agency</a> based in Paris.</p>
+				<p>Our team developed this version during the Foursquare Global Hackathon 2011.</p>
+				<br />
+				<p>Made with caffeine by :  <a href="http://twitter.com/#!/raildecom" style="color:white" title="@Raildecom">Emmanuel Tabard</a>, <a href="http://twitter.com/#!/jeromeduchamps" style="color:white" title="@jeromeduchamps"> Jérôme Duchamps</a>, <a href="http://twitter.com/#!/erwanonline" style="color:white" title="@erwanonline">Erwan Guiriec</a> ,  <a href="http://twitter.com/#!/simonduhil" style="color:white" title="@simonduhil">Simon Duhil</a></p>
+				<br />
+				<iframe src="//www.facebook.com/plugins/like.php?app_id=158532517566572&amp;href=http%3A%2F%2Fwww.facebook.com%2Fspokeagency&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:35px;" allowTransparency="true"></iframe>
+			</div>
+			<div>
+				<a href="http://www.spoke.fr" id="btn_discover" target="_blank"></a>
+				<a href="http://www.spoke.fr/contact" id="btn_contact" target="_blank"></a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/com/omci/ga.js"></script>
 </body>
 </html>

@@ -106,11 +106,39 @@ $(document).ready(function () {
 
 	<div id="content" class="chuipasla">
 		<h2>Discover the next badges you can unlock !</h2>
-		<div style="float:left">
+		<ul id="navigation">
+			<li class="active" id="filter_all"><a href="#allbadges">All</a>
+			<ul>
+				<li rel="nearest"><a href="#">Nearest</a></li>
+				<li rel="easiest"><a href="#">Easiest</a></li>
+			</ul>
+			</li>
+			<li id="filter_foursquare"><a href="#Foursquare">Foursquare</a>
+				<ul>
+					<li rel="nearest"><a href="#">Nearest</a></li>
+					<li rel="easiest"><a href="#">Easiest</a></li>
+				</ul>
+			</li>
+			<li id="filter_expertise"><a href="#Expertise">Expertise</a>
+			<ul>
+				<li rel="nearest"><a href="#">Nearest</a></li>
+				<li rel="easiest"><a href="#">Easiest</a></li>
+				<li rel="level"><a href="#">By level</a></li>
+			</ul>
+			</li>
+			<li id="filter_partner"><a href="#Partner">Partner</a>
+			<ul>
+				<li rel="nearest"><a href="#">Nearest</a></li>
+				<li rel="easiest"><a href="#">Easiest</a></li>
+			</ul>
+			</li>
+		</ul>
+		
+		<!-- <div style="float:left">
 			<p style="float:left; margin:6px 6px 0 0;"><b>Display :</b></p>
 			<a href="#" id="btn_near" class="btn active"></a>
 			<a href="#" id="btn_easy" class="btn"></a>
-		</div>
+		</div> -->
 		<div style="float:right; margin:15px 0 0 0;">
 			<p>Your last check-in : <b><span id="user-infos-lastcheck"></span></b></p>
 		</div>
@@ -231,7 +259,7 @@ $(document).ready(function () {
 	  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
 	</script>
 
-	<script type="text/javascript" charset="utf-8">
+	 <script type="text/javascript" charset="utf-8">
 	  var feedback_widget_options = {};
 
 	  feedback_widget_options.display = "overlay";  

@@ -40,6 +40,9 @@
 
 
 $(document).ready(function () {
+	$('#fdbk_tab').click(function () {
+		_gaq.push(['_trackEvent', 'external', 'feedback', 'Feedback' , 1]);
+	});
 	if("code" in Omc.Utils.getCurrentParams()){
 		$.cookie("token", Omc.Utils.getCurrentParams()["code"]);
 		document.location = "http://" + document.location.host + document.location.pathname;
@@ -261,7 +264,7 @@ $(document).ready(function () {
 	  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
 	</script>
 
-	<a href="https://github.com/OneMoreCheckin" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+	<a href="https://github.com/OneMoreCheckin" onclick="_gaq.push(['_trackEvent', 'external', 'github', 'Fork me on github' , 1]);" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
 	 <script type="text/javascript" charset="utf-8">
 	  var feedback_widget_options = {};
@@ -273,6 +276,7 @@ $(document).ready(function () {
 	  feedback_widget_options.style = "idea";
 
 	  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+
 	</script>
 </body>
 </html>

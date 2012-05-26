@@ -113,6 +113,7 @@ a.lienblanc{
 
 .social-buttons {
 	padding-top:25px;
+	text-align:right;
 }
 /**
  * Style to apply on body when top widgets are displayed as to avoid scrollish crap

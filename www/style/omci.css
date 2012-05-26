@@ -111,6 +111,9 @@ a.lienblanc{
 	z-index: 1000;
 }
 
+.social-buttons {
+	padding-top:25px;
+}
 /**
  * Style to apply on body when top widgets are displayed as to avoid scrollish crap
  */

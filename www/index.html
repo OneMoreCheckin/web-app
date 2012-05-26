@@ -34,7 +34,7 @@ $(document).ready(function () {
 		_gaq.push(['_trackEvent', 'external', 'feedback', 'Feedback' , 1]);
 	});
 	if("code" in Omc.Utils.getCurrentParams()){
-		$.cookie("token", Omc.Utils.getCurrentParams()["code"]);
+		$.cookie("token", Omc.Utils.getCurrentParams()["code"], { expires: 7 });
 		document.location = "http://" + document.location.host + document.location.pathname;
 		return;
 	}

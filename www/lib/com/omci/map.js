@@ -130,6 +130,7 @@ Omc.map = new (function(){
 		};
 		
 		var infowindow = new google.maps.InfoWindow();
+		var icon = "http://www.onemorecheckin.com/img/all_cat.png";
 
 		for (var i = 0; i < locations.length; i++) {
 			var checkin = locations[i];

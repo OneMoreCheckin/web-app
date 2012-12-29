@@ -42,7 +42,7 @@ Omc.map = new (function(){
 		var fond = new google.maps.MarkerImage("img/check_map.png",
 			new google.maps.Size(69, 80),
 			new google.maps.Point(0,0),
-			new google.maps.Point(18, 50)
+      new google.maps.Point(35, 80)
 		);
 
 		for(var x = 0; x < venues.length; x++){
@@ -67,7 +67,7 @@ Omc.map = new (function(){
 			// The origin for this image is 0,0.
 				new google.maps.Point(0,0),
 			// The anchor for this image is the base of the flagpole at 0,32.
-				new google.maps.Point(0, 32)
+				new google.maps.Point(17, 62)
 			);
 
 			var myLatLng = new google.maps.LatLng(venue.location.lat, venue.location.lng);
@@ -117,7 +117,7 @@ Omc.map = new (function(){
 		// while the position and offset are the same as for the main image.
 			new google.maps.Size(69, 80),
 			new google.maps.Point(0,0),
-			new google.maps.Point(18, 50)
+			new google.maps.Point(35, 80)
 		);
 		// Shapes define the clickable region of the icon.
 		// The type defines an HTML <area> element 'poly' which
@@ -141,7 +141,7 @@ Omc.map = new (function(){
 			// The origin for this image is 0,0.
 				new google.maps.Point(0,0),
 			// The anchor for this image is the base of the flagpole at 0,32.
-				new google.maps.Point(0, 32)
+				new google.maps.Point(17, 62)
 			);
 			var myLatLng = new google.maps.LatLng(checkin[1], checkin[2]);
 			var marker = new google.maps.Marker({

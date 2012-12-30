@@ -83,6 +83,7 @@ Omc.map = new (function(){
 				icon: cat,
 				shape: shape,
 				title: venue.name,
+				canonicalUrl: venue.canonicalUrl,
 				zIndex: (100-x),
 				description: description
 			});
@@ -92,7 +93,7 @@ Omc.map = new (function(){
 
 			google.maps.event.addListener(marker, 'click', function(event) {
 
-				var contentString = '<div id="info-window"><h3>' + this.title + "</h3>" + this.description +'</div>';
+				var contentString = '<div id="info-window"><h3><a href="'+this.canonicalUrl+'" target="_blank">' + this.title + '</a></h3>' + this.description +'</div>';
 
 				infowindow.setContent(contentString);
 				infowindow.setPosition(event.latLng);// this.position

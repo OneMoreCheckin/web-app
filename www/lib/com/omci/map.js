@@ -1,7 +1,7 @@
 Omc.map = new (function(){
 	var map;	
 
-	this.init = function(name, lat, lng, icon, z, description) {
+	this.init = function(name, lat, lng, icon, z, description, url) {
 		//objet contenant des propriétés avec des identificateurs prédéfinis dans Google Maps permettant
 		//de définir des options d'affichage de notre carte
 		var options = {
@@ -13,7 +13,7 @@ Omc.map = new (function(){
 		//constructeur de la carte qui prend en paramêtre le conteneur HTML
 		//dans lequel la carte doit s'afficher et les options
 		map = new google.maps.Map(document.getElementById("carte"), options);
-		this.setMarkers([[name, lat, lng, icon, z, description]], "img/example_cat.png");
+		this.setMarkers([[name, lat, lng, icon, z, description, url]], "img/example_cat.png");
 	}
 
 
@@ -154,7 +154,8 @@ Omc.map = new (function(){
 				shape: shape,
 				title: checkin[0],
 				zIndex: checkin[4],
-				description:checkin[5]
+				description:checkin[5],
+				canonicalUrl:checkin[6]
 			});
 
 			markersArray.push(marker);
@@ -171,7 +172,7 @@ Omc.map = new (function(){
 						'</div>' +
 						'</div>';
 
-				var contentString = '<div id="info-window"><h3>' + this.title + "</h3>" + this.description +'</div>';
+				var contentString = '<div id="info-window"><h3><a href="'+this.canonicalUrl+'" target="_blank">' + this.title + "</a></h3>" + this.description +'</div>';
 
 				infowindow.setContent(contentString);
 				infowindow.setPosition(event.latLng);// this.position

@@ -109,7 +109,9 @@ Omc.Widgets = new (function(){
 
 					Omc.HAX.lat = data.location.lat;
 					Omc.HAX.lng = data.location.lng;
-					Omc.map.init(data.name, data.location.lat, data.location.lng, data.icon, 4, description);
+					var url = "https://foursquare.com/v/" + data.venue;
+
+					Omc.map.init(data.name, data.location.lat, data.location.lng, data.icon, 4, description, url);
 
 					console.log("wooohoooo");
 					console.log(data);

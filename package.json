@@ -1,0 +1,60 @@
+{
+    "description": "OMCI front.", 
+    "contributors": [
+        {
+            "url": "http://www.webitup.fr", 
+            "name": "Mangled Deutz", 
+            "email": "dev@webitup.fr"
+        }, 
+        {
+            "url": "http://www.webitup.fr", 
+            "name": "Raildecom", 
+            "email": "dev@webitup.fr"
+        }
+    ], 
+    "author": "WebItUp <dev@webitup.fr> (http://www.webitup.fr/lab)", 
+    "homepage": "http://www.onemorecheckin.com", 
+    "directories": {
+        "tmp": ".tmp", 
+        "src": "src", 
+        "tests": "tests", 
+        "dist": "dist", 
+        "doc": "doc", 
+        "build": ".build"
+    }, 
+    "bugs": "https://github.com/OneMoreCheckin/web-app/issues", 
+    "repository": {
+        "url": "https://github.com/OneMoreCheckin/web-app.git", 
+        "type": "git"
+    }, 
+    "keywords": [
+    ], 
+    "maintainers": [
+        {
+            "url": "http://www.webitup.fr", 
+            "name": "Raildecom", 
+            "email": "dev@webitup.fr"
+        }
+    ], 
+    "dependencies": {}, 
+    "bower": {
+    }, 
+    "version": "3.0.0-dev", 
+    "scripts": {
+        "test": ""
+    }, 
+    "licenses": [
+        {
+            "url": "http://en.wikipedia.org/wiki/MIT_License", 
+            "type": "MIT"
+        }
+    ], 
+    "devDependencies": {
+        "jsdoc": "*", 
+        "fixmyjs": "*", 
+        "bower": "*", 
+        "jshint": "*"
+    }, 
+    "config": {}, 
+    "name": "omci-webapp"
+}
